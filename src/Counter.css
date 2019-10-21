@@ -1,0 +1,49 @@
+
+
+
+.timer {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.timer__controls {
+  display: flex;
+}
+
+.timer__controls > * {
+  flex: 1;
+}
+
+.timer__controls form {
+  flex: 1;
+  display: flex;
+}
+
+.timer__controls input {
+  flex: 1;
+  border: 0;
+  width: 20%;
+  padding: 2rem;
+}
+
+button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: rgb(133, 153, 0);
+  font-size: 2rem;
+  text-transform: uppercase;
+  background: rgba(0,64,82,0.8);
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  border-right: 1px solid rgba(0,0,0,0.2);
+  padding: 1rem;
+  font-family: monospace;
+}
+
+button:hover,
+button:focus {
+  background: rgba(0,64,82,0.5);
+  outline: 0;
+}
+

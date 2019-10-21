@@ -1,0 +1,17 @@
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+  background: rgb(0, 43, 54);
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  text-align: center;
+  font-family: monospace;
+  overflow: hidden;
+}
+
