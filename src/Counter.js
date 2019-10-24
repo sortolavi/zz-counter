@@ -10,6 +10,8 @@ class Counter extends React.Component {
     super(props);
     this.state = {
       timerOn: false,
+      timerBtn: null,
+      timerBtnVal: 0,
       timerTime: 0
     };
   }
@@ -18,6 +20,7 @@ class Counter extends React.Component {
   startTimer = () => {
     clearInterval(this.timer);
     this.setState({ timerOn: true });
+    
     const audioElem = document.querySelector(`audio`);
     
     this.timer = setInterval(() => {
@@ -39,6 +42,13 @@ class Counter extends React.Component {
 
   eventHandler = (e) => {
     let time;
+
+    // restore previous button original value after shift+click when another button is clicked
+    const { timerBtn } = this.state;
+    if(timerBtn){
+      timerBtn.childNodes[0].data = timerBtn.dataset.val;
+    }
+
     if(e.target.minutes) {
       e.preventDefault();
       time = parseInt(e.target.minutes.value);
@@ -49,15 +59,20 @@ class Counter extends React.Component {
       time = e.shiftKey ? 2 * time : time;
     }
     if(!isNaN(time) && time <= 60) {
-      this.setState({ timerTime: time * 1000 * 60 });
+      this.setState({ timerTime: time * 1000 * 60, timerBtn: e.target, timerBtnVal: time });
       this.startTimer();
     }
   }
 
   render() {
 
-    const { timerTime, timerOn } = this.state;
-      
+    const { timerTime, timerOn, timerBtn, timerBtnVal } = this.state;
+
+    // set button showing correct value also when shift-clicking
+    if(timerBtn){
+      timerBtn.childNodes[0].data = timerBtnVal;
+    }
+    
     let visState = 'visible';
 
     return (
