@@ -82,10 +82,11 @@ class Counter extends React.Component {
       <div className="timer">
         <div className="timer__controls" style={{visibility: visState}}>
           <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='5'>5</button>
-          <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='7'>7</button>
-          <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='10'>10</button>
-          <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='15'>15</button>
+          <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='7.5'>7.5</button>
+          {/* <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='10'>10</button>
+          <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='15'>15</button> */}
           <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='20'>20</button>
+          <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='25'>25</button>
           <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='30'>30</button>
           {/* <form name="customForm" id="custom" onSubmit={this.eventHandler}>
             <input type="text" name="minutes" placeholder="or enter minutes"/>
