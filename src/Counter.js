@@ -40,10 +40,11 @@ class Counter extends React.Component {
     }, 1000);
   }
 
+
   eventHandler = (e) => {
     let time;
-
-    // restore previous button original value after shift+click when another button is clicked
+    
+    // restore previous button original value after double click when another button is active
     const { timerBtn } = this.state;
     if(timerBtn){
       timerBtn.childNodes[0].data = timerBtn.dataset.val;
@@ -56,8 +57,10 @@ class Counter extends React.Component {
     }
     else {
       time = e.target.dataset.val;
-      time = e.shiftKey ? 2 * time : time;
+      time = (e.type === 'dblclick') ? 2 * time : time;
+      // time = e.shiftKey ? 2 * time : time;
     }
+
     if(!isNaN(time) && time <= 60) {
       this.setState({ timerTime: time * 1000 * 60, timerBtn: e.target, timerBtnVal: time });
       this.startTimer();
@@ -68,7 +71,7 @@ class Counter extends React.Component {
 
     const { timerTime, timerOn, timerBtn, timerBtnVal } = this.state;
 
-    // set button showing correct value also when shift-clicking
+    // set button showing correct value also when double clicking
     if(timerBtn){
       timerBtn.childNodes[0].data = timerBtnVal;
     }
@@ -78,13 +81,12 @@ class Counter extends React.Component {
     return (
       <div className="timer">
         <div className="timer__controls" style={{visibility: visState}}>
-          {/* <button onClick={this.eventHandler} data-val='0.1'>6 s</button> */}
-          <button onClick={this.eventHandler} data-val='5'>5</button>
-          <button onClick={this.eventHandler} data-val='7'>7</button>
-          <button onClick={this.eventHandler} data-val='10'>10</button>
-          <button onClick={this.eventHandler} data-val='15'>15</button>
-          <button onClick={this.eventHandler} data-val='20'>20</button>
-          <button onClick={this.eventHandler} data-val='30'>30</button>
+          <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='5'>5</button>
+          <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='7'>7</button>
+          <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='10'>10</button>
+          <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='15'>15</button>
+          <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='20'>20</button>
+          <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='30'>30</button>
           {/* <form name="customForm" id="custom" onSubmit={this.eventHandler}>
             <input type="text" name="minutes" placeholder="or enter minutes"/>
           </form> */}
