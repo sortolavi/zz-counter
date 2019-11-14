@@ -3,7 +3,6 @@ import CounterDisplay from './CounterDisplay';
 import './Counter.css';
 
 
-
 class Counter extends React.Component {
 
   constructor(props) {
@@ -15,14 +14,16 @@ class Counter extends React.Component {
       timerTime: 0
     };
   }
-
+  
 
   startTimer = () => {
     clearInterval(this.timer);
     this.setState({ timerOn: true });
     
     const audioElem = document.querySelector(`audio`);
+    // const audioElem = elem;
     
+
     this.timer = setInterval(() => {
 
       const newTime = this.state.timerTime - 1000;
@@ -32,6 +33,7 @@ class Counter extends React.Component {
       }
       else {
         clearInterval(this.timer);
+        audioElem.muted = false;
         audioElem.currentTime = 0;
         audioElem.play();
         this.setState({ timerOn: false });
@@ -63,6 +65,12 @@ class Counter extends React.Component {
 
     if(!isNaN(time) && time <= 60) {
       this.setState({ timerTime: time * 1000 * 60, timerBtn: e.target, timerBtnVal: time });
+
+      // without this hack, Brave browser would give err msg and not play the sound later when time is full
+      const ae = document.querySelector(`audio`);
+      ae.muted = true;
+      ae.play();
+
       this.startTimer();
     }
   }
@@ -81,6 +89,7 @@ class Counter extends React.Component {
     return (
       <div className="timer">
         <div className="timer__controls" style={{visibility: visState}}>
+          <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='0.1'>6s</button>
           <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='5'>5</button>
           <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='7.5'>7.5</button>
           {/* <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='10'>10</button>
