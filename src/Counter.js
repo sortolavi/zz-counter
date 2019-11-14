@@ -89,11 +89,8 @@ class Counter extends React.Component {
     return (
       <div className="timer">
         <div className="timer__controls" style={{visibility: visState}}>
-          <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='0.1'>6s</button>
           <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='5'>5</button>
           <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='7.5'>7.5</button>
-          {/* <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='10'>10</button>
-          <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='15'>15</button> */}
           <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='20'>20</button>
           <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='25'>25</button>
           <button onDoubleClick={this.eventHandler} onClick={this.eventHandler} data-val='30'>30</button>
